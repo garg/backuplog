@@ -1,0 +1,20 @@
+  <p>
+    <b>Computer</b><br />
+    <%= f.select(:computer_id, Computer.find(:all).collect {|u| [u.name, u.id]}, { :include_blank => true }) %>
+  </p>
+
+  <p>
+    <b>Task</b><br />
+    <%= f.select(:task_id, Task.find(:all).collect {|u| [u.name, u.id]}, { :include_blank => true })  %>
+  </p>
+
+  <p>
+    <b>User</b><br />
+    <%= f.select(:user_id, User.find(:all).collect {|u| [u.name, u.id]}, {:selected => session[:user_id]})  %>	
+  </p>
+  
+  <p>
+    <b>Notes</b><br />
+    <%= f.text_field :notes %>
+  </p>
+

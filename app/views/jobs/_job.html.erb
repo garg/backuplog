@@ -1,0 +1,8 @@
+<tr>
+    <td><%=h Task.find(job.task_id).name %></td>
+    <td><%=h User.find(job.user_id).name %></td>
+	<td><%=h job.notes %></td>
+    <td><%= link_to 'Show', job %></td>
+    <td><%= link_to 'Edit', edit_job_path(job) %></td>
+    <td><%= link_to 'Destroy', job, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>

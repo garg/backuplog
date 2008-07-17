@@ -1,0 +1,43 @@
+<% form_tag(:action => :daterange) do  %>
+  from: <%= date_select('range', 'start_date', :order => [:month, :day, :year])%>
+  to: <%= date_select('range', 'end_date', :order => [:month, :day, :year])%>
+<%= submit_tag "submit" %>
+<% end %>
+
+
+<h1>Backup History</h1>
+
+<%= link_to 'New job', new_job_path %>
+
+<% @job_date.keys.sort.reverse.each do |date, jobs|%>
+<h2> <%= date.strftime('%m-%d-%y %A') %> </h2>
+    <table>
+      <tr>
+        <th>Computer</th>
+        <th>Task</th>
+        <th>User</th>
+        <th>Notes</th>
+      </tr>
+  <% for job in @job_date[date] %>
+
+      <tr>
+        <td><%=h Computer.find(job.computer_id).name %></td>
+        <td><%=h Task.find(job.task_id).name %></td>
+        <td><%=h User.find(job.user_id).name %></td>
+      <td><%=h job.notes %></td>
+        <td><%= link_to 'Show', job %></td>
+        <td><%= link_to 'Edit', edit_job_path(job) %></td>
+        <td><%= link_to 'Destroy', job, :confirm => 'Are you sure?', :method => :delete %></td>
+      </tr>
+
+  <% end %>
+
+    </table>
+<% end %>
+
+
+<p><%= will_paginate @jobs %></p>
+<br />
+
+<%= link_to 'New job', new_job_path %>
+

@@ -1,0 +1,10 @@
+<div id="nav-menu">
+<ul>
+<li><a><%= link_to_unless_current "Computers", :controller => "Computers", :action => "index" %></a></li>
+<li><a><%= link_to_unless_current "Users", :controller => "Users" %></a></li>
+<li><a><%= link_to_unless_current "Jobs", :controller => "Jobs" %></a></li>
+<li><a><%= link_to_unless_current "Tasks", :controller => "Tasks" %></a></li>
+<li><a><%= link_to "Log out", :controller => "admin", :action => "logout" %></a></li>
+
+</ul>
+</div> 
